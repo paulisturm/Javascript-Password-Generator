@@ -4,7 +4,6 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   var charset = ""
-  console.log('initial: ', charset)
   var length =  prompt('how long do you want the password')
   var letters = confirm("would you like to use letters?")
   var numbers = confirm("would you like to use numbers?")
@@ -12,11 +11,11 @@ function writePassword() {
   if(letters) {
     charset += "abcdefghijklmnopqrstuvwxyz"
   }
-  if(letters) {
-    charset += "abcdefghijklmnopqrstuvwxyz"
+  if(numbers) {
+    charset += "123456789"
   }
-  if(letters) {
-    charset += "abcdefghijklmnopqrstuvwxyz"
+  if(characters) {
+    charset += "!@#$%^&*()"
   }
   var password = generatePassword(length, charset);
   var passwordText = document.querySelector("#password");
@@ -29,20 +28,9 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword(length, charset) {
-  // var answers = askQuestions(),
-  // var length = 8,
-      // charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
   var retVal = "";
   for (var i = 0, n = charset.length; i < length; ++i) {
       retVal += charset.charAt(Math.floor(Math.random() * n));
   }
   return retVal;
 }
-
-
-
-// // function askQuestions() {
-//   // ... asking   questions
-
-//   return {answers: answers};
-// }
